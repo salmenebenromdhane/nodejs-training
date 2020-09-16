@@ -2,6 +2,8 @@ const http = require('http');
 const express = require('express')
 const bodyParser = require('body-parser')
 
+const mongoose=require('./db/database');
+
 const hostname = '127.0.0.1';
 const port = 3000;
 
