@@ -1,31 +1,36 @@
 const express=require('express')
 const router=express.Router()
+const User=require('../models/userSchema');
 
 // add new user
-router.post('/add',(req,res)=>{
-    console.log(req.body);
-    res.json(req.body);
+router.post('/add', async (req,res)=>{
+    const user = new User(req.body);
+    await user.save();
+    res.json(user);
 });
 
 // get all users
-router.get('/all',(req,res)=>{
-    res.json({message:"get all users on this route"});
+router.get('/all', async (req,res)=>{
+    const users = await User.find();
+    res.json(users)
 });
 
 // get user by id
-router.get('/:id',(req,res)=>{
-    res.json({message:"this is a simple user Id : "+req.params.id});
+router.get('/:id', async (req,res)=>{
+  const user = await User.findById(req.params.id);
+  res.json(user);
 });
 
 // update user
-router.put('/update/:id',(req,res)=>{
-    console.log("Id user updated :"+req.params.id)
+router.put('/update/:id', async (req,res)=>{
+    await User.findByIdAndUpdate(req.params.id,req.body);
     res.json(req.body);
 });
 
 // delete user
-router.delete('/delete/:id',(req,res)=>{
-    res.json({message:"Id user deleted: "+req.params.id});
+router.delete('/delete/:id', async (req,res)=>{
+    await User.findByIdAndDelete(req.params.id);
+    res.json({ message : "user with id "+req.params.id+" deleted" });
 });
 
 module.exports=router;
