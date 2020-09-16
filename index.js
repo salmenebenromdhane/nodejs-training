@@ -8,6 +8,7 @@ const hostname = '127.0.0.1';
 const port = 3000;
 
 const userApi=require('./routes/userApi');
+const todoApi=require('./routes/todoApi');
 
 var app = express();
 
@@ -23,7 +24,7 @@ app.get('/',(req,res)=>{
 });
 
 app.use('/user',userApi);
-
+app.use('/todo',todoApi);
 
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
