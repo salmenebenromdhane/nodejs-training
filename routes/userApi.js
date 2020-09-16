@@ -11,13 +11,13 @@ router.post('/add', async (req,res)=>{
 
 // get all users
 router.get('/all', async (req,res)=>{
-    const users = await User.find();
+    const users = await User.find().populate('todos').exec();;
     res.json(users)
 });
 
 // get user by id
 router.get('/:id', async (req,res)=>{
-  const user = await User.findById(req.params.id);
+  const user = await User.findById(req.params.id).populate('todos').exec();
   res.json(user);
 });
 
