@@ -1,0 +1,22 @@
+{
+  "name": "nodejs-training",
+  "version": "1.0.0",
+  "description": "this a package for nodejs training",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salmenebenromdhane/nodejs-training.git"
+  },
+  "keywords": [
+    "js"
+  ],
+  "author": "sal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/salmenebenromdhane/nodejs-training/issues"
+  },
+  "homepage": "https://github.com/salmenebenromdhane/nodejs-training#readme"
+}
