@@ -18,10 +18,33 @@ app.get('/',(req,res)=>{
     res.send({ message: 'hello world!'});
 });
 
-app.post('/addUser',(req,res)=>{
+// add new user
+app.post('/user/add',(req,res)=>{
     console.log(req.body);
     res.json(req.body);
 });
+
+// get all users
+app.get('/user/all',(req,res)=>{
+    res.json({message:"get all users on this route"});
+});
+
+// get user by id
+app.get('/user/:id',(req,res)=>{
+    res.json({message:"this is a simple user Id : "+req.params.id});
+});
+
+// update user
+app.put('/user/update/:id',(req,res)=>{
+    console.log("Id user updated :"+req.params.id)
+    res.json(req.body);
+});
+
+// delete user
+app.delete('/user/delete/:id',(req,res)=>{
+    res.json({message:"Id user deleted: "+req.params.id});
+});
+
 
 
 app.listen(port, hostname, () => {
