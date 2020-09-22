@@ -24,7 +24,8 @@ let mailOptions = {
   from: 'salmene.benromdhane@esprit.tn', // TODO: email sender
   to: 'salmene.benromdhane@esprit.tn', // TODO: email receiver
   subject: 'Nodemailer - Test',
-  text: 'Wooohooo it works!!'
+  text: 'Wooohooo it works!!',
+  html: "<b>Hello world?</b>",
 };
 
 // Step 3
