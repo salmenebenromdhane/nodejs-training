@@ -9,7 +9,7 @@ const port = 3000;
 
 const userApi=require('./routes/userApi');
 const todoApi=require('./routes/todoApi');
-
+const nodeMailerApi=require('./routes/nodeMailerApi');
 var app = express();
 
 
@@ -25,7 +25,7 @@ app.get('/',(req,res)=>{
 
 app.use('/user',userApi);
 app.use('/todo',todoApi);
-
+app.use('/test',nodeMailerApi);
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });

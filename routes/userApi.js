@@ -11,7 +11,7 @@ router.post('/add', async (req,res)=>{
 
 // get all users
 router.get('/all', async (req,res)=>{
-    const users = await User.find().populate('todos').exec();;
+    const users = await User.find().populate('todos').exec();
     res.json(users)
 });
 
