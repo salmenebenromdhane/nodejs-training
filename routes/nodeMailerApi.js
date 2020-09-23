@@ -3,12 +3,11 @@
 const express=require('express')
 const router=express.Router()
 const nodemailer = require("nodemailer");
-var ejs = require("ejs");
-var path=require('path');
+
 require('dotenv').config();
 
 
-// sending simple mail
+// add new todo
 router.post('/add', async (req,res)=>{
 // Step 1
 let transporter = nodemailer.createTransport({
@@ -39,44 +38,5 @@ transporter.sendMail(mailOptions, (err, data) => {
 
 });
 
-//sending mail with html file
-router.post('/sendMailWithHtml', async (req,res)=>{
 
-  // Step 1
-  let transporter = nodemailer.createTransport({
-    
-    service: 'gmail',
-    auth: {
-        user: process.env.EMAIL || 'your gmail account', // TODO: your gmail account
-        pass: process.env.PASSWORD || 'your gmail password' // TODO: your gmail password
-    }
-  });
-  
-  // Step 2
- let fileData = {
-  name: 'Salmene.'
-};
-ejs.renderFile(path.resolve('./views/','EmailTemplate.html'), fileData, function (err, data) {
-  if (err) {
-      console.log(err);
-  } else {
-      var mainOptions = {
-          from: '"salmene.benromdhane@esprit.tn',
-          to: "salmene.benromdhane@esprit.tn",
-          subject: 'Hello, world',
-          html: data
-      };
-     // Step 3
-      transporter.sendMail(mainOptions, function (err, info) {
-        if (err) {
-          res.json(err);
-      }
-          res.json("Email sent!")
-      });
-  }
-  
-  });
-  
-  });
-  
 module.exports=router;

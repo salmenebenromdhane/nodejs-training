@@ -12,7 +12,7 @@ router.post('/add', async (req,res)=>{
 // get all todos
 router.get('/all', async (req,res)=>{
     const todos = await Todo.find();
-    res.json(todos);
+    res.json(todos)
 });
 
 // get todo by id
